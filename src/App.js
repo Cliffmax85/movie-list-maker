@@ -2,6 +2,7 @@ import './App.css';
 import Movie from './Movie';
 import { useState } from 'react';
 import MovieForm from './MovieForm';
+import MovieList from './MovieList';
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
   const [movieFormColor, setMovieFormColor] = useState('');
   const [movieFormDirector, setMovieFormDirector] = useState('');
   const [movieFormYear, setMovieFormYear] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState('');
   // title, 
   // handleDeleteMovie,
   // color,
@@ -32,6 +34,19 @@ function App() {
     setMovieFormDirector('');
     setMovieFormYear('');
   }
+
+  function handleDeleteMovie(title) {
+    const index = allMovies.findIndex(movie => movie.title === title);
+    allMovies.splice(index, 1);
+    setAllMovies([...allMovies]);
+  }
+
+  function handleFilteredMovies(search) {
+    const filteredMovies = allMovies.filter(movie => movie.title.includes(search));
+    {search ? setFilteredMovies([...filteredMovies]) : setFilteredMovies([...allMovies]);
+    }
+  }
+
   return (
     <div className="App">
       <div>
@@ -43,6 +58,9 @@ function App() {
           title: movieFormTitle,
         }}/>
       </div>
+      <div>
+        <input onChange={(e) => handleFilteredMovies(e.target.value)} />
+      </div>
       <MovieForm 
         submitMovie={submitMovie}
         movieFormTitle={movieFormTitle}
@@ -51,12 +69,14 @@ function App() {
         setMovieFormDirector={setMovieFormDirector}
         movieFormYear={movieFormYear}
         setMovieFormYear={setMovieFormYear}
-        movieFormColor={setMovieFormColor}
+        movieFormColor={movieFormColor}
         setMovieFormColor={setMovieFormColor}
   
       />
+      <MovieList movies={filteredMovies.length ? filteredMovies : allMovies}
+        handleDeleteMovie={handleDeleteMovie}/>
     </div>
-
+      
   );
 }
 
