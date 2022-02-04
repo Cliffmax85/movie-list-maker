@@ -19,13 +19,14 @@ export default function MovieForm(props) {
         <label>
             Color
           <select required value={props.movieFormColor} onChange={e => props.setMovieFormColor(e.target.value)}>
-            <option value="red">Red</option>
+            <option value="magenta">Magenta</option>
             <option value="blue">Blue</option>
             <option value="orange">Orange</option>
             <option value="yellow">Yellow</option>
             <option value="pink">Pink</option>
           </select>
         </label>
+        <button>Add Movie</button>
       </form>  
     </div>
   );
