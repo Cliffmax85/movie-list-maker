@@ -19,11 +19,26 @@ function App() {
   function submitMovie(e) {
     e.preventDefault();
     const movie = {
+      title: movieFormTitle,
+      color: movieFormColor,
+      director: movieFormDirector,
+      year: movieFormYear
+    };
+    setAllMovies([...allMovies, movie]);
 
-    }
+    setMovieFormTitle('');
+    setMovieFormColor('');
+    setMovieFormDirector('');
+    setMovieFormYear('');
   }
   return (
     <div className="App">
+      <Movie movie={{
+        color: movieFormColor,
+        director: movieFormDirector,
+        year: movieFormYear,
+        title: movieFormTitle,
+      }}/>
 
     </div>
   );
