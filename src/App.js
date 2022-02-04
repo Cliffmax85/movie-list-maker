@@ -1,24 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+import Movie from './Movie';
+import { useState } from 'react';
+import MovieForm from './MovieForm';
 
 function App() {
+  
+  const [allMovies, setAllMovies] = useState([]);
+  const [movieFormTitle, setMovieFormTitle] = useState('');
+  const [movieFormColor, setMovieFormColor] = useState('');
+  const [movieFormDirector, setMovieFormDirector] = useState('');
+  const [movieFormYear, setMovieFormYear] = useState('');
+  // title, 
+  // handleDeleteMovie,
+  // color,
+  // director,
+  // year
+
+
+  function submitMovie(e) {
+    e.preventDefault();
+    const movie = {
+      title: movieFormTitle,
+      color: movieFormColor,
+      director: movieFormDirector,
+      year: movieFormYear
+    };
+    setAllMovies([...allMovies, movie]);
+
+    setMovieFormTitle('');
+    setMovieFormColor('');
+    setMovieFormDirector('');
+    setMovieFormYear('');
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h2>Enter Movie Data</h2>
+        <Movie movie={{
+          color: movieFormColor,
+          director: movieFormDirector,
+          year: movieFormYear,
+          title: movieFormTitle,
+        }}/>
+      </div>
+      <MovieForm 
+        submitMovie={submitMovie}
+        movieFormTitle={movieFormTitle}
+        setMovieFormTitle={setMovieFormTitle}
+        movieFormDirector={movieFormDirector}
+        setMovieFormDirector={setMovieFormDirector}
+        movieFormYear={movieFormYear}
+        setMovieFormYear={setMovieFormYear}
+        movieFormColor={setMovieFormColor}
+        setMovieFormColor={setMovieFormColor}
+  
+      />
     </div>
+
   );
 }
 
