@@ -1,6 +1,7 @@
 import './App.css';
 import Movie from './Movie';
 import { useState } from 'react';
+import MovieForm from './MovieForm';
 
 function App() {
   
@@ -33,14 +34,28 @@ function App() {
   }
   return (
     <div className="App">
-      <Movie movie={{
-        color: movieFormColor,
-        director: movieFormDirector,
-        year: movieFormYear,
-        title: movieFormTitle,
-      }}/>
-
+      <div>
+        <Movie movie={{
+          color: movieFormColor,
+          director: movieFormDirector,
+          year: movieFormYear,
+          title: movieFormTitle,
+        }}/>
+      </div>
+      <MovieForm 
+        submitMovie={submitMovie}
+        movieFormTitle={movieFormTitle}
+        setMovieFormTitle={setMovieFormTitle}
+        movieFormDirector={movieFormDirector}
+        setMovieFormDirector={setMovieFormDirector}
+        movieFormYear={movieFormYear}
+        setMovieFormYear={setMovieFormYear}
+        movieFormColor={setMovieFormColor}
+        setMovieFormColor={setMovieFormColor}
+  
+      />
     </div>
+
   );
 }
 
