@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Movie from './Movie';
+import { useState } from 'react';
 
 function App() {
+  
+  const [allMovies, setAllMovies] = useState([]);
+  const [movieFormTitle, setMovieFormTitle] = useState('');
+  const [movieFormColor, setMovieFormColor] = useState('');
+  const [movieFormDirector, setMovieFormDirector] = useState('');
+  const [movieFormYear, setMovieFormYear] = useState('');
+  // title, 
+  // handleDeleteMovie,
+  // color,
+  // director,
+  // year
+
+
+  function submitMovie(e) {
+    e.preventDefault();
+    const movie = {
+
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
