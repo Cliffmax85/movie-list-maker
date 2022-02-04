@@ -35,6 +35,7 @@ function App() {
   return (
     <div className="App">
       <div>
+        <h2>Enter Movie Data</h2>
         <Movie movie={{
           color: movieFormColor,
           director: movieFormDirector,
