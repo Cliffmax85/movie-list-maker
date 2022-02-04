@@ -32,6 +32,12 @@ function App() {
     setMovieFormDirector('');
     setMovieFormYear('');
   }
+
+  function handleDeleteMovie(title) {
+    const index = allMovies.findIndex(movie => movie.title === title);
+    allMovies.splice(index, 1);
+    setAllMovies([...allMovies]);
+  }
   return (
     <div className="App">
       <div>
